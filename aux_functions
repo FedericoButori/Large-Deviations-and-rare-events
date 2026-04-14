@@ -1,4 +1,4 @@
-%The following function computes the drift term in the equation.
+#The following function computes the drift term in the equation.
 
 B=function(x, params){
 a=params[1]
@@ -10,7 +10,7 @@ v=x[2]
 return(c(-b*u*v + a*u + d, b*u*v -c*v +d))
   }
 
-%The following function computes numerically a path of the SDE.
+#The following function computes numerically a path of the SDE.
 
 simulate=function(x_0){
     time=seq(0, Tmax, by=dt)
@@ -24,7 +24,7 @@ simulate=function(x_0){
     }
 return(path)}
 
-%The following function computes the phi-derivative of the Hamiltonian for the adjoint problem. 
+#The following function computes the phi-derivative of the Hamiltonian for the adjoint problem. 
 
 gradphiH=function(phi, theta, params){
   a=params[1]
@@ -36,7 +36,7 @@ gradphiH=function(phi, theta, params){
   return(c(out1, out2))
 }
 
-%The following function computes the theta-derivative of the Hamiltonian for the adjoint problem. 
+#The following function computes the theta-derivative of the Hamiltonian for the adjoint problem. 
 
 gradthetaH=function(phi, theta, params){
   a=params[1]
