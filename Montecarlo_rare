@@ -1,6 +1,7 @@
-#The following code reproduces the image 1. The first part produces the flow
+#The following code reproduces the image 1 and 2. The first part produces the flow
 #lines of the deterministic ODE, the second sample the process X_\varepsilon, record and plot only the rare
-#realizations of interest. The tolerance for the event `F(X_\varepsilon(T)) = 0.286' is 10−3.
+#realizations of interest. The tolerance for the event `F(X_\varepsilon(T)) = 0.286' is 10−3. 
+#The second part of the code reproduce image 2.
 
 Tsim=2
 plot(x = 1,                 
@@ -44,3 +45,15 @@ for(ntimes in 1:10^6){
 
 rare
 points(phi[1,], phi[2,], type="l", col="orange", lwd="2")
+
+############################################################
+
+u=pos
+df=data.frame(x=u[1,-1], y=u[2,-1])
+dfphi = data.frame(z=phi[1,], t=phi[2,])
+require(ggplot2)
+p <- ggplot(df, aes(x, y))
+p <- (p + stat_bin2d(bins = 150) + scale_fill_gradient(trans="log10") 
+         + geom_path(dfphi, mapping=aes(x=z,y=t), color="orange") 
+          + coord_fixed(ratio=0.7))
+p
